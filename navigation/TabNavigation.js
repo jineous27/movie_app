@@ -10,6 +10,7 @@ import SearchScreen from "../screens/Search";
 import { BG_COLOR } from "../constants/Colors";
 import TabBarIcon from "../Components/TabBarIcon";
 
+
 const TabNavigation = createBottomTabNavigator(
     {
         Movie: {
