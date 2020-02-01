@@ -20,7 +20,10 @@ const MainNavigation = createStackNavigator(
 
         } 
     },
-    {}
+    {//뒤로 버튼 back 없애기//
+        headerMode: "screen",
+        headerBackTitleVisible: false
+    }
 );
 
 export default createAppContainer(MainNavigation);
