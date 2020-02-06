@@ -14,6 +14,6 @@ const Container = styled.View`
 
 export default () => (
     <View>
-        <ActivityIndicator color={WHITE} />
+        <ActivityIndicator color={"red"} />
     </View>
 );
