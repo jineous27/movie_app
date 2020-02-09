@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from "react-native";
 import TVPresenter from "./TVPresenter";
-import { moviesApi } from '../../src/api';
+import { tvApi } from "../../src/api";
 
 class TVContainer extends Component {
     state = {
@@ -13,9 +13,12 @@ class TVContainer extends Component {
     };
     async componentDidMount() {
         try {
-            const popular = await moviesApi.popular();
-            const topRated = await moviesApi.topRated();
-            const airingToday = await moviesApi.airingToday();
+            ({ data: { results: popular}} = await tvApi.popular());
+            ({ data: { results: topRated}} = await tvApi.topRated());
+            ({ data: { results: airingToday}} = await tvApi.airingToday());
+            // const popular = await tvApi.popular();
+            // const topRated = await tvApi.topRated();
+            // const airingToday = await tvApi.airingToday();
 
             this.setState({
                 popular: popular,

@@ -16,9 +16,13 @@ class MoviesContainer extends Component {
 // try 가 가장 먼저 실행되고, 에러가 나면 catch로 가고 ㅗ마무리는 finally//
   async componentDidMount() {
     try {
-      const upcoming = await moviesApi.upcoming(); // 무비스 api에서 업커밍을 태운 데이터를 업커밍이라고 칭한다//
-      const popular = await moviesApi.popular();
-      const nowPlaying = await moviesApi.nowPlaying();
+      // ({ data: { results: upcoming}} = await moviesApi.upcoming());
+      ({ data: { results: upcoming}} = "https://api.themoviedb.org/3/movie/popular?api_key=8597e491ed6e80f0de12e349eb60ea6e")
+      ({ data: { results: popular}} = await moviesApi.popular());
+      ({ data: { results: nowPlaying }} = await moviesApi.nowPlaying());
+      // const upcoming = await moviesApi.upcoming(); // 무비스 api에서 업커밍을 태운 데이터를 업커밍이라고 칭한다//
+      // const popular = await moviesApi.popular();
+      // const nowPlaying = await moviesApi.nowPlaying();
 //upcoming에는 upcoming을 넣겠다. ComponentDidMount를 지나가면 빨간색 upcoming 안에 하얀색 상태값 upcoming을 데이터를 담겠다는 것/뜻 //
       this.setState({
         upcoming: upcoming,
@@ -36,7 +40,7 @@ class MoviesContainer extends Component {
 
   render() {
     const { loading, popular, upcoming, nowPlaying } = this.state;
-    console.log(popular)
+    console.log("popular is" , popular)
     return <MoviesPresenter loading={loading} />;
   }
 }
